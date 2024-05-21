@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Stream - Viewer</title>
+  <link rel="stylesheet" href="user_creator.css">
+  <style>
+   body {
+      background: rgba(0, 0, 0, 0.9);
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .live-container {
+      width: 80%;
+      margin-top: 20px;
+    }
+
+    .video-container {
+      border: 4px solid #e4a4d8;
+      padding: 20px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 400px;
+      background: #000;
+    }
+
+    .info-container {
+      margin-bottom: 20px;
+    }
+
+    .comments-container {
+      border: 2px solid #9b59b6;
+      padding: 20px;
+      height: 300px;
+      overflow-y: auto;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .comment {
+      margin-bottom: 10px;
+    }
+
+    .comment-input {
+      display: flex;
+      margin-top: 10px;
+    }
+
+    .comment-input input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 5px 0 0 5px;
+      border: none;
+    }
+
+    .comment-input button {
+      background: #e4a4d8;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+
+    .comment-input button:hover {
+      background: #fff;
+      color: #e4a4d8;
+    }
+
+    .subscribe-button {
+      background: #e4a4d8;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .subscribe-button:hover {
+      background: #fff;
+      color: #e4a4d8;
+    }
+
+    .like-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 24px;
+      color: #e4a4d8;
+      margin-top: 20px;
+      margin-left: 10px;
+    }
+
+    .like-button:hover {
+      color: #fff;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .hamburger-menu {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      cursor: pointer;
+    }
+
+    .hamburger-menu div {
+      width: 30px;
+      height: 3px;
+      background: #fff;
+      margin: 5px 0;
+    }
+
+    .menu {
+      display: none;
+      position: absolute;
+      top: 50px;
+      left: 0;
+      width: 200px;
+      background: rgba(0, 0, 0, 0.9);
+      color: #fff;
+      padding: 10px;
+      z-index: 1000;
+    }
+
+    .menu ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu ul li {
+      margin: 10px 0;
+    }
+
+    .menu ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .menu ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .token-modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.9);
+      padding: 20px;
+      border: 2px solid #e4a4d8;
+      border-radius: 10px;
+      z-index: 2000;
+    }
+
+    .token-modal h2 {
+      margin-top: 0;
+    }
+
+    .token-modal input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #e4a4d8;
+    }
+
+    .token-modal button {
+      background: #e4a4d8;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .token-modal button:hover {
+      background: #fff;
+      color: #e4a4d8;
+    }
+
+    .token-modal .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      color: #e4a4d8;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .token-modal .close-button:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="hamburger-menu" id="hamburgerMenu">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="menu" id="menu">
+    <ul>
+      <li><a href="IndexUN.html">Profile</a></li>
+      <li><a href="IndexUH.html">History</a></li>
+      <li><a href="IndexUN.html">Notifications</a></li>
+      <li><a href="IndexUB.html">Notifications</a></li>
+    </ul>
+  </div>
+  <div class="live-container" id="liveContainer">
+    <div class="video-container">
+      <video id="liveVideo" controls></video>
+      <div class="info-container">
+        <h2 id="videoTitle">Live Video Title</h2>
+        <p id="videoDescription">Live Video Description</p>
+      </div>
+      <div class="stats">
+        <span id="viewersCount">Viewers: 0</span>
+        <span id="likesCount">Likes: 0</span>
+        <span id="commentsCount">Comments: 0</span>
+      </div>
+      <button class="subscribe-button" id="subscribeButton">Subscribe</button>
+      <button class="like-button" id="likeButton">💜</button>
+    </div>
+    <div class="comments-container" id="commentsContainer">
+      <!-- User comments will appear here -->
+    </div>
+    <div class="comment-input">
+      <input type="text" id="commentInput" placeholder="Write a comment...">
+      <button id="sendCommentButton"><img src="img/army_bomb_icon (2).png" alt="Send"></button>
+    </div>
+  </div>
+  <div class="token-modal" id="tokenModal">
+    <button class="close-button" id="closeModalButton">&times;</button>
+    <h2>Buy Tokens</h2>
+    <input type="number" id="tokenAmount" placeholder="Enter amount of tokens">
+    <button id="buyTokensButton">Buy Tokens</button>
+  </div>
+  <script src="viewer_live.js"></script>
+</body>
+</html>

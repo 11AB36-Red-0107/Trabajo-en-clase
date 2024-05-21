@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link rel="stylesheet" href="user_creator.css">
+  <style>
+    .main-container {
+      display: flex;
+      height: 100vh;
+      width: 100%;
+    }
+
+    .menu {
+      width: 20%;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .menu h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .menu ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu ul li {
+      margin: 10px 0;
+    }
+
+    .menu ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .menu ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .menu .logout-button {
+      background: #e4a4d8;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .content {
+      width: 80%;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      overflow-y: auto;
+    }
+
+    .profile-info img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+    }
+
+    .profile-info h3 {
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .edit-button {
+      background: #e4a4d8;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .edit-button:hover {
+      background: #fff;
+      color: #e4a4d8;
+    }
+
+    .section {
+      margin-top: 20px;
+    }
+
+    .section h4 {
+      margin-bottom: 10px;
+    }
+
+    .channel-list .channel {
+      border: 2px solid #9b59b6;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .channel-list .channel img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      float: left;
+      margin-right: 20px;
+    }
+
+    .channel-list .channel h3 {
+      margin: 0 0 10px;
+    }
+
+    .follow-button {
+      background: #fff;
+      color: #e4a4d8;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .follow-button:hover {
+      background: #e4a4d8;
+      color: #fff;
+    }
+
+    .channel-form {
+      display: none;
+      flex-direction: column;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    .channel-form input,
+    .channel-form button {
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .channel-form button {
+      background: #e4a4d8;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .channel-form button:hover {
+      background: #fff;
+      color: #e4a4d8;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <div class="menu">
+      <div>
+        <h2>Menu</h2>
+        <ul>
+          <li><a href="IndexUB.html">Search</a></li>
+          <li><a href="IndexUH.html">History</a></li>
+          <li><a href="IndexUN.html">Notifications</a></li>
+        </ul>
+      </div>
+      <button class="logout-button">Log out</button>
+    </div>
+    <div class="content">
+      <div class="profile-info">
+        <img src="default_profile.png" id="profileImage" alt="Profile Image">
+        <h3 id="userName">User Name</h3>
+        <div class="buttons">
+          <button class="edit-button" id="editProfileButton">Edit</button>
+          <button class="edit-button" id="becomeChannelButton">Become a Channel</button>
+        </div>
+        <div id="editProfileForm" style="display: none;">
+          <input type="text" id="editUserName" placeholder="Edit Name">
+          <input type="password" id="editPassword" placeholder="Edit Password">
+          <input type="file" id="editUserImage" accept="image/*">
+          <button class="edit-button" id="saveProfileButton">Save</button>
+        </div>
+        <div id="channelForm" class="channel-form">
+          <input type="text" id="channelName" placeholder="Channel Name">
+          <input type="text" id="channelDescription" placeholder="Channel Description">
+          <button id="saveChannelButton">Save</button>
+        </div>
+      </div>
+      <div class="section">
+        <h4>Subscribed Channels</h4>
+        <div class="channel-list" id="subscribedChannels">
+          <!-- Subscribed channels will be dynamically loaded here -->
+        </div>
+      </div>
+      <div class="section">
+        <h4>Followed Channels</h4>
+        <div class="channel-list" id="followedChannels">
+          <!-- Followed channels will be dynamically loaded here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="JavaUP.js"></script>
+</body>
+</html>

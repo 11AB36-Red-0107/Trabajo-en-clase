@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Stream - Subscribed Viewer</title>
+  <link rel="stylesheet" href="user_creator.css">
+  <style>
+    body {
+      background: rgba(0, 0, 0, 0.9);
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .live-container {
+      width: 80%;
+      margin-top: 20px;
+    }
+
+    .video-container {
+      border: 4px solid #e4a4d8;
+      padding: 20px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 400px;
+      background: #000;
+    }
+
+    .info-container {
+      margin-bottom: 20px;
+    }
+
+    .comments-container {
+      border: 2px solid #9b59b6;
+      padding: 20px;
+      height: 300px;
+      overflow-y: auto;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .comment {
+      margin-bottom: 10px;
+    }
+
+    .comment-input {
+      display: flex;
+      margin-top: 10px;
+    }
+
+    .comment-input input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 5px 0 0 5px;
+      border: none;
+    }
+
+    .comment-input button {
+      background: #e4a4d8;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+
+    .comment-input button:hover {
+      background: #fff;
+      color: #e4a4d8;
+    }
+
+    .like-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 24px;
+      color: #e4a4d8;
+      margin-top: 20px;
+      margin-left: 10px;
+    }
+
+    .like-button:hover {
+      color: #fff;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .hamburger-menu {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      cursor: pointer;
+    }
+
+    .hamburger-menu div {
+      width: 30px;
+      height: 3px;
+      background: #fff;
+      margin: 5px 0;
+    }
+
+    .menu {
+      display: none;
+      position: absolute;
+      top: 50px;
+      left: 0;
+      width: 200px;
+      background: rgba(0, 0, 0, 0.9);
+      color: #fff;
+      padding: 10px;
+      z-index: 1000;
+    }
+
+    .menu ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu ul li {
+      margin: 10px 0;
+    }
+
+    .menu ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .menu ul li a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="hamburger-menu" id="hamburgerMenu">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="menu" id="menu">
+    <ul>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="history.html">History</a></li>
+      <li><a href="notifications.html">Notifications</a></li>
+    </ul>
+  </div>
+  <div class="live-container">
+    <div class="video-container">
+      <video id="liveVideo" controls></video>
+      <div class="info-container">
+        <h2 id="videoTitle">Live Video Title</h2>
+        <p id="videoDescription">Live Video Description</p>
+      </div>
+      <div class="stats">
+        <span id="viewersCount">Viewers: 0</span>
+        <span id="likesCount">Likes: 0</span>
+        <span id="commentsCount">Comments: 0</span>
+      </div>
+    </div>
+    <div class="comments-container" id="commentsContainer">
+      <!-- User comments will appear here -->
+    </div>
+    <div class="comment-input">
+      <input type="text" id="commentInput" placeholder="Write a comment...">
+      <button id="sendCommentButton"><img src="img/army_bomb_icon.ico" alt="Send"></button>
+    </div>
+    <button class="like-button" id="likeButton">❤️</button>
+  </div>
+  <script src="subscribed_live.js"></script>
+</body>
+</html>

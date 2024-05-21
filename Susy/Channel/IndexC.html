@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Channel Creator - XERATH</title>
+  <link rel="stylesheet" href="channel_creator.css">
+</head>
+<body>
+  <header>
+    <div class="logo">XERATH</div>
+  </header>
+
+  <div class="channel-creator" id="channelCreatorInterface">
+    <div class="channel-header">
+      <div class="channel-info">
+        <img id="channelCreatorImage" src="#" alt="Channel Image">
+        <div>
+          <h2 id="channelCreatorName">Channel Name</h2>
+          <p id="channelCreatorDescription">Channel Description</p>
+        </div>
+      </div>
+      <div class="channel-actions">
+        <button onclick="logout()">Logout</button>
+        <button onclick="viewHistory()">View Broadcast History</button>
+      </div>
+    </div>
+    <div class="live-stream">
+      <h2>Start a Live Stream</h2>
+      <div class="input-box">
+        <input type="text" placeholder="Stream Title" id="streamTitle">
+      </div>
+      <div class="input-box">
+        <input type="text" placeholder="Stream Description" id="streamDescription">
+      </div>
+      <button class="btn" onclick="startLiveStream()">Go Live</button>
+    </div>
+  </div>
+
+  <script src="JavaC.js"></script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="user_creator.css">
+  <style>
+    .main-container {
+      display: flex;
+      height: 100vh;
+      width: 100%;
+    }
+
+    .menu {
+      width: 20%;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .menu h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .menu ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu ul li {
+      margin: 10px 0;
+    }
+
+    .menu ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .menu ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .menu .config-button {
+      background: #e4a4d8;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .config-options {
+      display: none;
+      position: absolute;
+      bottom: 60px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #000;
+      border-radius: 5px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      z-index: 10;
+    }
+
+    .config-options label {
+      display: block;
+      margin: 10px 0;
+    }
+
+    .content {
+      width: 80%;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      overflow-y: auto;
+    }
+
+    .content.dark-theme {
+      background: #fff;
+      color: #000;
+    }
+
+    .channel {
+      border: 2px solid #9b59b6;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .channel img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      float: left;
+      margin-right: 20px;
+    }
+
+    .channel h3 {
+      margin: 0 0 10px;
+    }
+
+    .live-indicator {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: red;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      display: none;
+    }
+
+    .follow-button {
+      background: #fff;
+      color: #e4a4d8;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .follow-button:hover {
+      background: #e4a4d8;
+      color: #fff;
+    }
+
+    .search-bar {
+      margin-bottom: 20px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .all-channels {
+      margin-top: 40px;
+    }
+
+    .all-channels h2 {
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .all-channels.dark-theme h2 {
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <div class="menu">
+      <div>
+        <h2>Menu</h2>
+        <ul>
+          <li><a href="IndexUP.html">Profile</a></li>
+          <li><a href="IndexUH.html">History</a></li>
+          <li><a href="IndexUN.html">Notifications</a></li>
+        </ul>
+      </div>
+      <button class="logout-button">Log out</button>
+    </div>
+    <div class="content">
+      <div class="search-bar">
+        <input type="text" id="channelSearch" placeholder="Search for a channel">
+      </div>
+      <div id="searchResults">
+        <!-- Search results will appear here -->
+      </div>
+      <div class="all-channels">
+        <h2>Discover More Channels</h2>
+        <div id="allChannels">
+          <!-- All channels will be dynamically loaded here -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="JavaUB.js"></script>
+</body>
+</html>
